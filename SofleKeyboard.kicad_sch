@@ -2756,14 +2756,14 @@
 				(pin passive inverted
 					(at -7.62 0 0)
 					(length 5.08)
-					(name "1"
+					(name "6"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "1"
+					(number "6"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2774,14 +2774,14 @@
 				(pin passive inverted
 					(at 7.62 0 180)
 					(length 5.08)
-					(name "2"
+					(name "5"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "2"
+					(number "5"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5298,10 +5298,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "5"
 			(uuid "c7ce76aa-cf5a-4d56-823d-8add3e6dc159")
 		)
-		(pin "2"
+		(pin "6"
 			(uuid "ed782388-0d12-4225-9f28-6c5a9b22723b")
 		)
 		(instances
@@ -5365,10 +5365,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "5"
 			(uuid "24cbbe4a-efd7-4d34-899a-ab62f87b012c")
 		)
-		(pin "2"
+		(pin "6"
 			(uuid "288aa2be-0f71-45db-93ce-8931e27a1c85")
 		)
 		(instances
@@ -5407,7 +5407,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 152.4 72.39 0)
 			(effects
 				(font
@@ -5500,10 +5500,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "e35a724c-d4cc-4e9f-81f6-288cfb02b3f0")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "04f54f16-0e1a-4d91-aabb-ad09aec32965")
 		)
 		(instances
@@ -5542,7 +5542,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 172.72 72.39 0)
 			(effects
 				(font
@@ -5635,10 +5635,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "5"
 			(uuid "f4270b97-47c6-4edb-bde3-a50ed6fb51fb")
 		)
-		(pin "2"
+		(pin "6"
 			(uuid "3ada1651-612b-4a59-a9ca-812e0a833d88")
 		)
 		(instances
@@ -5677,7 +5677,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 193.04 72.39 0)
 			(effects
 				(font
@@ -5770,10 +5770,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "0ce9ae96-c58b-4188-8523-97cb185fc612")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "a7f10d55-1300-46aa-b239-80433feafa92")
 		)
 		(instances
@@ -5812,7 +5812,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 213.36 72.39 0)
 			(effects
 				(font
@@ -5905,10 +5905,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "f5d19b7a-383c-48c8-bfea-d721db6a0e97")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "bef232ff-603e-49c0-a90e-d2ad31f74fe5")
 		)
 		(instances
@@ -5947,7 +5947,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 233.68 72.39 0)
 			(effects
 				(font
@@ -6040,10 +6040,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "dea79739-063d-4f52-b300-2b0060b61203")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "16456832-eae1-40ed-bfd2-b2c518f64918")
 		)
 		(instances
@@ -6082,7 +6082,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 254 72.39 0)
 			(effects
 				(font
@@ -6175,10 +6175,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "bd81d2a3-2ff2-4561-9fae-040ae08d1bc6")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "6ac19ea1-da86-4a73-baf8-347f183f3787")
 		)
 		(instances
@@ -6242,10 +6242,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "8feb0f84-d1f2-40fb-9302-6640d5f9fdc3")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "beda2947-bead-44a0-a7df-2b644d2a60ba")
 		)
 		(instances
@@ -6309,10 +6309,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "e6d2e34a-eab0-4608-be0d-9421506957ca")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "15c2aea5-b3e2-45a3-9e63-8d3219647c18")
 		)
 		(instances
@@ -6376,10 +6376,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "67c93a9c-e2c5-492c-9f19-7b11e7e8b11d")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "e185d4e7-4187-41ff-b5b1-b07061ba2005")
 		)
 		(instances
@@ -6443,10 +6443,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "ccea3e7f-d003-4c2d-8af7-65fde1e1cf40")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "588b3dc2-31f2-4a5b-8c87-8a5618e70dec")
 		)
 		(instances
@@ -6510,10 +6510,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "237c26b0-bbcb-44ef-b247-2674cee70dde")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "28e18126-2eeb-46ec-a268-82bf5a9a381d")
 		)
 		(instances
@@ -6552,7 +6552,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 152.4 88.9 0)
 			(effects
 				(font
@@ -6620,7 +6620,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 172.72 88.9 0)
 			(effects
 				(font
@@ -6688,7 +6688,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 193.04 88.9 0)
 			(effects
 				(font
@@ -6756,7 +6756,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 213.36 88.9 0)
 			(effects
 				(font
@@ -6824,7 +6824,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 233.68 88.9 0)
 			(effects
 				(font
@@ -6892,7 +6892,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 254 88.9 0)
 			(effects
 				(font
@@ -6985,10 +6985,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "431e77e7-4bb4-46b6-b870-d33c2be6e1ac")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "5cf3ac69-b881-4ade-952a-97684e80d78e")
 		)
 		(instances
@@ -7052,10 +7052,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "0d210671-7088-41e5-bc76-363a567d94c2")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "2949c545-a408-4d53-ab56-3cb61f6fa685")
 		)
 		(instances
@@ -7119,10 +7119,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "8892700c-59ab-463d-a9a1-6a3725978402")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "8f86d45b-7e72-49b0-be1d-5719619c245a")
 		)
 		(instances
@@ -7186,10 +7186,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "8a2a2817-a1f7-4444-91e6-e4a42e812e2e")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "ca864527-9075-46ef-9047-312173221794")
 		)
 		(instances
@@ -7253,10 +7253,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "217353cf-4d86-4edf-8437-ea6f20e27f1f")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "5b5ccf77-d012-42bb-873d-a750b11a7f61")
 		)
 		(instances
@@ -7320,10 +7320,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "aeefdc43-b262-4f37-90e9-2929ba618712")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "85899352-af66-499e-b501-2ae1dd7890ef")
 		)
 		(instances
@@ -7362,7 +7362,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 152.4 105.41 0)
 			(effects
 				(font
@@ -7430,7 +7430,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 172.72 105.41 0)
 			(effects
 				(font
@@ -7498,7 +7498,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 193.04 105.41 0)
 			(effects
 				(font
@@ -7566,7 +7566,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 213.36 105.41 0)
 			(effects
 				(font
@@ -7634,7 +7634,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 233.68 105.41 0)
 			(effects
 				(font
@@ -7702,7 +7702,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 254 105.41 0)
 			(effects
 				(font
@@ -7795,10 +7795,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "7b78e717-4880-4970-882d-4ba74358af38")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "4d511660-8fc3-4408-91fc-4417ba0d2901")
 		)
 		(instances
@@ -7862,10 +7862,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "d5f8ee88-dd03-44e5-8197-191805084bd9")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "dfceea6f-0207-4285-9c31-e3225d889721")
 		)
 		(instances
@@ -7929,10 +7929,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "fe1d1ad9-b66c-4c15-9416-713951edf4af")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "40f88266-7b5a-4179-8166-07cb1f92ee27")
 		)
 		(instances
@@ -7996,10 +7996,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "f9cb8dac-37f8-4441-ab2c-9c6b3aacf51a")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "49fe83b2-72a1-4adc-9e51-2a978ce11cc6")
 		)
 		(instances
@@ -8063,10 +8063,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "82074b30-daaa-42fa-8120-5788454e2f31")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "4e358269-dafe-4230-abe1-e50277fac9ed")
 		)
 		(instances
@@ -8130,10 +8130,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "efd0b9f3-0bc2-4960-aa54-c8c2ca2f5ae0")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "5ec28bee-3591-4656-b208-5e45eb704fb1")
 		)
 		(instances
@@ -8172,7 +8172,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 152.4 121.92 0)
 			(effects
 				(font
@@ -8240,7 +8240,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 172.72 121.92 0)
 			(effects
 				(font
@@ -8308,7 +8308,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 193.04 121.92 0)
 			(effects
 				(font
@@ -8376,7 +8376,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 213.36 121.92 0)
 			(effects
 				(font
@@ -8444,7 +8444,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 233.68 121.92 0)
 			(effects
 				(font
@@ -8512,7 +8512,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 254 121.92 0)
 			(effects
 				(font
@@ -8605,10 +8605,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "5"
 			(uuid "c3e08f3c-f4f4-41f0-8503-19d7e8c4d7ce")
 		)
-		(pin "2"
+		(pin "6"
 			(uuid "1410328e-54d9-4894-882d-e5b153387938")
 		)
 		(instances
@@ -8672,10 +8672,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "c6fb619f-a807-4fe1-a8d8-110898cbadae")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "c9991c30-56a0-4ac9-b3f2-643793726830")
 		)
 		(instances
@@ -8739,10 +8739,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "0c934d97-c94a-4b53-b705-628823e2a1d8")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "e9d92957-f3be-4c02-b5af-e0a80526c361")
 		)
 		(instances
@@ -8781,7 +8781,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 172.72 138.43 0)
 			(effects
 				(font
@@ -8849,7 +8849,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 193.04 138.43 0)
 			(effects
 				(font
@@ -8917,7 +8917,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 213.36 138.43 0)
 			(effects
 				(font
@@ -8985,7 +8985,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 233.68 138.43 0)
 			(effects
 				(font
@@ -10069,10 +10069,10 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
+		(pin "6"
 			(uuid "18407fcf-57a7-4c0d-98eb-935401918859")
 		)
-		(pin "2"
+		(pin "5"
 			(uuid "8faa28a8-a566-44ac-9c19-f7e40081d682")
 		)
 		(instances
@@ -10111,7 +10111,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:crkbd-diode"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 254 138.43 0)
 			(effects
 				(font
@@ -10363,7 +10363,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2b732596-b265-41bd-acac-c5a1d7ce5aaf")
-		(property "Reference" "SW32"
+		(property "Reference" "ENC1"
 			(at 74.93 123.1899 0)
 			(effects
 				(font
@@ -10381,7 +10381,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Rotary_Encoder:RotaryEncoder_Alps_EC12E_Vertical_H20mm"
 			(at 64.77 120.396 0)
 			(effects
 				(font
@@ -10420,7 +10420,7 @@
 		(instances
 			(project ""
 				(path "/43cfd488-4c9d-4da2-b703-dd4909c44cb8"
-					(reference "SW32")
+					(reference "ENC1")
 					(unit 1)
 				)
 			)
@@ -10778,9 +10778,10 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "SW_NAV"
 			(at 73.66 139.7 0)
 			(effects
 				(font
@@ -10788,7 +10789,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "VicoKeyboard:NavSwitch_5Way"
 			(at 73.66 151.13 0)
 			(effects
 				(font
