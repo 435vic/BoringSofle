@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name "SofleChoc")(type "KiCad")(uri "${KIPRJMOD}/SofleChoc.pretty")(options "")(descr ""))
+)
