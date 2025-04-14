@@ -47,9 +47,9 @@
 	(condition "A.Type == 'Via'")
   # Choose between:
   # 1-6 Layers
-  # (constraint annular_width (min 0.05mm))
+	(constraint annular_width (min 0.05mm))
   # 1-6 Layers (preferred)
-	(constraint annular_width (min 0.075mm))
+  # (constraint annular_width (min 0.075mm))
 )
 
 (rule "JLCPCB: PTH Hole Size"
@@ -83,7 +83,7 @@
 (rule "JLCPCB: Avoid 4-Wire Kelvin Test"
 	(condition "(A.Type == 'Via' && A.Hole < 0.3mm && A.Diameter <= 0.4mm) || (A.Type == 'Pad' && ((A.Hole_Size_X < 0.3mm && A.Size_X <= 0.4mm) || (A.Hole_Size_Y < 0.3mm && A.Size_Y <= 0.4mm)))")
   # 4-6 Layers
-  (constraint annular_width (min 0.125mm))
+  #(constraint annular_width (min 0.125mm))
 )
 
 
