@@ -59,20 +59,7 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [
-        [
-          "footprint_type_mismatch|272100573|21976634|05fe9fee-b1ee-4c6e-a4b9-248d2c8836d9|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "hole_to_hole|199255573|79346634|8f0dc3dd-da73-41e4-b858-e036a2409279|cb54f216-de43-4dc5-9585-666efb9abd06",
-          "NPTH hole has no net, safe to ignore"
-        ],
-        [
-          "hole_to_hole|199339120|77302640|8f0dc3dd-da73-41e4-b858-e036a2409279|cb54f216-de43-4dc5-9585-666efb9abd06",
-          ""
-        ]
-      ],
+      "drc_exclusions": [],
       "meta": {
         "filename": "board_design_settings.json",
         "version": 2
@@ -561,7 +548,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "../BoringSofle-Gerbers/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
