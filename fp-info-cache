@@ -1,4 +1,4 @@
-113375352050376
+115122813893940
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -101730,3 +101730,10 @@ NavSwitch_5Way
 0
 6
 6
+VicoKeyboard
+Panasonic_EVQPUL_EVQPUC
+http://industrial.panasonic.com/cdbs/www-data/pdf/ATV0000/ATV0000CE5.pdf
+SMD SMT SPST EVQPUL EVQPUC
+0
+8
+2
