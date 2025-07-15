@@ -4,7 +4,7 @@
 	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "SW_NAV"
-		(at 0 -0.5 0)
+		(at -1 1.1 0)
 		(unlocked yes)
 		(layer "F.SilkS")
 		(uuid "878dc852-c4e3-4ec9-a59f-5960e5771adc")
@@ -60,10 +60,10 @@
 		(end 4.665829 8.53312)
 		(stroke
 			(width 0.1)
-			(type default)
+			(type solid)
 		)
 		(fill no)
-		(layer "Dwgs.User")
+		(layer "F.SilkS")
 		(uuid "51f8212f-b2d7-4f47-aae5-6bd6d2ebf983")
 	)
 	(pad "1" thru_hole circle
