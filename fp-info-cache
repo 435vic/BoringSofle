@@ -1,4 +1,4 @@
-120388850244056
+122141733505545
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -103102,6 +103102,13 @@ SMD SMT SPST EVQPUL EVQPUC
 0
 8
 2
+VicoKeyboard
+RotaryEncoder_Alps_EC12E_Vertical_H20mm
+Alps rotary encoder, EC12E..., vertical shaft, http://www.alps.com/prod/info/E/HTML/Encoder/Incremental/EC12E/EC12E1240405.html
+rotary encoder
+0
+5
+4
 VicoKeyboard
 boring_sofle_text
 
