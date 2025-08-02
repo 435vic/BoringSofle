@@ -20,6 +20,8 @@ points:
   zones:
     # The primary 6x4 key matrix, plus 3 modifiers.
     matrix:
+      anchor:
+        shift: [150, -180]
       # Choc spacing
       key:
         padding: 1ky
@@ -226,6 +228,7 @@ pcbs.main:
         shift:
           [-2.2,-10]
         rotate: -90
-        
-
-
+    gndplane:
+      what: ceoloide/utility_filled_zone
+      params:
+        side: "F&B"
