@@ -3,14 +3,16 @@ units:
   kx: cx
   ky: cy
   # Padding Variables
+
   px: kx + 4
   py: ky + 4
   # padding to the right of keys for microcontroller
   pmc: 2.4px
   # microcontroller dimensions
   mx: 18
-
   my: 33
+  # microcontroller y offset
+  moy: -10
   $default_width: cx
   $default_height: cy
 
@@ -27,7 +29,6 @@ points:
         # Hide the first two mods and the last mod.
         # Provide a Sofle-like column stagger.
         outer:
-
           rows.mod.skip: true
         pinky:
           rows.mod.skip: true
@@ -67,7 +68,6 @@ points:
             splay: -15
         # Spacebar uses a 1.5 wide key.
         space:
-
           key:
             width: 1.5kx
             splay: 75
@@ -95,6 +95,7 @@ outlines:
   keys:
     - "keys_no_thumb"
     - "thumb"
+
   _micro:
     - what: rectangle
       where:
@@ -128,7 +129,6 @@ outlines:
         - ref: thumbs_space_cluster
           shift: [-0.75px,-0.5py]
         - ref: thumbs_space_cluster
-
           shift: [-0.75px,0.5py]
         - ref: matrix_index_mod
           shift: [2, -0.5py]
@@ -201,12 +201,23 @@ pcbs.main:
       where:
         ref.aggregate.parts:
           - ref: matrix_inner_num
-
           - - ref: matrix_inner_num
             - ref: matrix_index_num
               shift: [pmc+0.5kx,0]
               affect: "x"
 
-        shift: [0, -10]
+        shift: [0, moy]
         # rotate: -90
+    display:
+      what: ceoloide/display_nice_view
+      params:
+        reversible: true
+      where:
+        ref.aggregate.parts:
+          - ref: matrix_inner_num
+          - - ref: matrix_inner_num
+            - ref: matrix_index_num
+              shift: [pmc+0.5kx,0]
+              affect: "x"
+        shift: [0, moy-2.8]
 
