@@ -24,6 +24,7 @@ points:
       key:
         padding: 1ky
         spread: 1kx
+        tags: [switch]
 
       columns:
         # Hide the first two mods and the last mod.
@@ -54,6 +55,7 @@ points:
       key:
         padding: 1ky
         spread: 1kx
+        tags: [switch]
 
       # Place thumbs where the inner mod would go.
       anchor:
@@ -64,7 +66,6 @@ points:
         # Fan thumbs out by -15 degrees.
         layer:
           key:
-
             splay: -15
         # Spacebar uses a 1.5 wide key.
         space:
@@ -75,50 +76,44 @@ points:
       rows:
         # Thumbs only have one row.
         cluster:
+    mcu:
+      anchor:
+        ref.aggregate.parts:
+          - ref: matrix_inner_num
+          - - ref: matrix_inner_num
+            - ref: matrix_index_num
+              shift: [pmc+0.5kx,0]
+              affect: "x"
+
 outlines:
-  # Pure key outline.
-  raw:
-
+  _keys_1u:
     - what: rectangle
-      where: true
-      size: [px, py]
-  # Key outlines with 0.5mm removed to show key overlaps.
-  keys_no_thumb:
-    - what: rectangle
-      where: true
-
+      where: [[switch, -thumbs_space_cluster]]
       size: [kx-0.5,ky-0.5]
-  thumb:
+  _key_thumb:
     - what: rectangle
       where: thumbs_space_cluster
       size: [1.5kx-0.5, 1ky-0.5]
   keys:
-    - "keys_no_thumb"
-    - "thumb"
+    - "_keys_1u"
+    - "_key_thumb"
 
   _micro:
     - what: rectangle
       where:
-          ref.aggregate.parts:
-            - ref: matrix_inner_num
-            - - ref: matrix_inner_num
-              - ref: matrix_index_num
-
-                shift: [pmc+0.5kx,0]
-                affect: "x"
+          ref: mcu
           # rotate: -90
       adjust:
         shift: [0, -10]
       size: [mx, my]
   plate_keys:
     - what: rectangle
-      where: true
+      where: [switch]
       size: 14
   right_side:
     - what: polygon
       operation: stack
       points:
-
         - ref: matrix_index_num
           shift: [0.5px,0.5ky]
         - ref: matrix_index_num
@@ -162,27 +157,25 @@ outlines:
   plate:
     - "outline"
     - "-plate_keys"
-pcbs.main:
 
+pcbs.main:
   template: kicad8
   outlines.main:
     outline: outline
   footprints:
     switch:
       what: choc
-      where: true
+      where: [switch]
       params:
         keycaps: true
         reverse: true
         hotswap: true
         from: "{{column_net}}"
-
         to: "{{colrow}}"
-    diode:
 
+    diode:
       what: ceoloide/diode_tht_sod123
       where: true
-
       params:
         reversible: true
         from: "{{colrow}}"
@@ -194,30 +187,45 @@ pcbs.main:
       what: ceoloide/mcu_nice_nano
       params:
         reversible: true
-
         reverse_mount: true
-
         only_required_jumpers: true
       where:
-        ref.aggregate.parts:
-          - ref: matrix_inner_num
-          - - ref: matrix_inner_num
-            - ref: matrix_index_num
-              shift: [pmc+0.5kx,0]
-              affect: "x"
-
+        ref: mcu
         shift: [0, moy]
         # rotate: -90
+  
     display:
       what: ceoloide/display_nice_view
       params:
         reversible: true
+        MOSI: P2
+        SCK: P3
+        CS: P1
       where:
-        ref.aggregate.parts:
-          - ref: matrix_inner_num
-          - - ref: matrix_inner_num
-            - ref: matrix_index_num
-              shift: [pmc+0.5kx,0]
-              affect: "x"
+        ref: mcu
         shift: [0, moy-2.8]
+    power_switch:
+      what: ceoloide/power_switch_smd_side
+      params:
+        reversible: true
+        include_silkscreen: false
+      where:
+        # edge of board
+        ref:
+          ref: matrix_index_home
+          shift: [pmc,0]
+        shift: [-1.86, -0.25]
+    reset:
+      what: ceoloide/reset_switch_smd_side
+      params:
+        reversible: true
+      where:
+        ref:
+          ref: matrix_index_home
+          shift: [pmc,0]
+        shift:
+          [-2.2,-10]
+        rotate: -90
+        
+
 
