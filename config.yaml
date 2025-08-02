@@ -9,6 +9,7 @@ units:
   pmc: 2.4px
   # microcontroller dimensions
   mx: 18
+
   my: 33
   $default_width: cx
   $default_height: cy
@@ -21,10 +22,12 @@ points:
       key:
         padding: 1ky
         spread: 1kx
+
       columns:
         # Hide the first two mods and the last mod.
         # Provide a Sofle-like column stagger.
         outer:
+
           rows.mod.skip: true
         pinky:
           rows.mod.skip: true
@@ -50,17 +53,21 @@ points:
       key:
         padding: 1ky
         spread: 1kx
+
       # Place thumbs where the inner mod would go.
       anchor:
+
         ref: matrix_inner_mod
         shift: [2, -2]
       columns:
         # Fan thumbs out by -15 degrees.
         layer:
           key:
+
             splay: -15
         # Spacebar uses a 1.5 wide key.
         space:
+
           key:
             width: 1.5kx
             splay: 75
@@ -71,6 +78,7 @@ points:
 outlines:
   # Pure key outline.
   raw:
+
     - what: rectangle
       where: true
       size: [px, py]
@@ -78,6 +86,7 @@ outlines:
   keys_no_thumb:
     - what: rectangle
       where: true
+
       size: [kx-0.5,ky-0.5]
   thumb:
     - what: rectangle
@@ -93,6 +102,7 @@ outlines:
             - ref: matrix_inner_num
             - - ref: matrix_inner_num
               - ref: matrix_index_num
+
                 shift: [pmc+0.5kx,0]
                 affect: "x"
           # rotate: -90
@@ -107,6 +117,7 @@ outlines:
     - what: polygon
       operation: stack
       points:
+
         - ref: matrix_index_num
           shift: [0.5px,0.5ky]
         - ref: matrix_index_num
@@ -117,6 +128,7 @@ outlines:
         - ref: thumbs_space_cluster
           shift: [-0.75px,-0.5py]
         - ref: thumbs_space_cluster
+
           shift: [-0.75px,0.5py]
         - ref: matrix_index_mod
           shift: [2, -0.5py]
@@ -151,6 +163,8 @@ outlines:
     - "outline"
     - "-plate_keys"
 pcbs.main:
+
+  template: kicad8
   outlines.main:
     outline: outline
   footprints:
@@ -162,25 +176,37 @@ pcbs.main:
         reverse: true
         hotswap: true
         from: "{{column_net}}"
+
         to: "{{colrow}}"
     diode:
-      what: diode
+
+      what: ceoloide/diode_tht_sod123
       where: true
+
       params:
+        reversible: true
         from: "{{colrow}}"
         to: "{{row_net}}"
       adjust:
         shift: [0, -5]
+
     controller:
-      what: promicro
+      what: ceoloide/mcu_nice_nano
       params:
-        orientation: "down"
+        reversible: true
+
+        reverse_mount: true
+
+        only_required_jumpers: true
       where:
         ref.aggregate.parts:
           - ref: matrix_inner_num
+
           - - ref: matrix_inner_num
             - ref: matrix_index_num
               shift: [pmc+0.5kx,0]
               affect: "x"
+
         shift: [0, -10]
-        rotate: -90
+        # rotate: -90
+
