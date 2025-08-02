@@ -5,6 +5,11 @@ units:
   # Padding Variables
   px: kx + 4
   py: ky + 4
+  # padding to the right of keys for microcontroller
+  pmc: 2.4px
+  # microcontroller dimensions
+  mx: 18
+  my: 33
   $default_width: cx
   $default_height: cy
 
@@ -81,6 +86,19 @@ outlines:
   keys:
     - "keys_no_thumb"
     - "thumb"
+  _micro:
+    - what: rectangle
+      where:
+          ref.aggregate.parts:
+            - ref: matrix_inner_num
+            - - ref: matrix_inner_num
+              - ref: matrix_index_num
+                shift: [pmc+0.5kx,0]
+                affect: "x"
+          # rotate: -90
+      adjust:
+        shift: [0, -10]
+      size: [mx, my]
   plate_keys:
     - what: rectangle
       where: true
@@ -92,7 +110,7 @@ outlines:
         - ref: matrix_index_num
           shift: [0.5px,0.5ky]
         - ref: matrix_index_num
-          shift: [2.4px,0.5ky]
+          shift: [pmc,0.5ky]
         - shift: [0, -4.2ky]
         - ref: thumbs_space_cluster
           shift: [0.65px,-0.5py]
@@ -128,6 +146,41 @@ outlines:
   combo:
     - "outline"
     - "-keys"
+    # - "-_micro"
   plate:
     - "outline"
     - "-plate_keys"
+pcbs.main:
+  outlines.main:
+    outline: outline
+  footprints:
+    switch:
+      what: choc
+      where: true
+      params:
+        keycaps: true
+        reverse: true
+        hotswap: true
+        from: "{{column_net}}"
+        to: "{{colrow}}"
+    diode:
+      what: diode
+      where: true
+      params:
+        from: "{{colrow}}"
+        to: "{{row_net}}"
+      adjust:
+        shift: [0, -5]
+    controller:
+      what: promicro
+      params:
+        orientation: "down"
+      where:
+        ref.aggregate.parts:
+          - ref: matrix_inner_num
+          - - ref: matrix_inner_num
+            - ref: matrix_index_num
+              shift: [pmc+0.5kx,0]
+              affect: "x"
+        shift: [0, -10]
+        rotate: -90
