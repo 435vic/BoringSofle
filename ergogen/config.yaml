@@ -12,7 +12,7 @@ units:
   mx: 18
   my: 33
   # microcontroller y offset
-  moy: -10
+  moy: -5.8
   $default_width: cx
   $default_height: cy
 
@@ -86,6 +86,22 @@ points:
             - ref: matrix_index_num
               shift: [pmc+0.5kx,0]
               affect: "x"
+    oled_cover_mount_left:
+      key.tags: [oled_cover_mount]
+      anchor:
+        - ref: mcu
+        - ref: matrix_inner_bottom
+          affect: "y"
+          shift: [0, 6.6]
+        - shift: [-8, 0]
+    oled_cover_mount_right:
+      key.tags: [oled_cover_mount]
+      anchor:
+        - ref: mcu
+        - ref: matrix_inner_bottom
+          affect: "y"
+          shift: [0, 6.6]
+        - shift: [8, 0]
 
 outlines:
   _keys_1u:
@@ -166,18 +182,17 @@ pcbs.main:
     outline: outline
   footprints:
     switch:
-      what: choc
+      what: ceoloide/switch_choc_v1_v2
       where: [switch]
       params:
-        keycaps: true
-        reverse: true
-        hotswap: true
+        reversible: true
+        choc_v2_support: false
         from: "{{column_net}}"
         to: "{{colrow}}"
 
     diode:
       what: ceoloide/diode_tht_sod123
-      where: true
+      where: [switch]
       params:
         reversible: true
         from: "{{colrow}}"
@@ -211,12 +226,14 @@ pcbs.main:
       params:
         reversible: true
         include_silkscreen: false
+        from: "RAW"
+        to: "BAT_P"
       where:
         # edge of board
         ref:
           ref: matrix_index_home
           shift: [pmc,0]
-        shift: [-1.86, -0.25]
+        shift: [-1.86, 4.25]
     reset:
       what: ceoloide/reset_switch_smd_side
       params:
@@ -226,8 +243,32 @@ pcbs.main:
           ref: matrix_index_home
           shift: [pmc,0]
         shift:
-          [-2.2,-10]
+          [-2.2,moy]
         rotate: -90
+    encoder:
+      what: ceoloide/rotary_encoder_ec11_ec12
+      params:
+        include_momentary_switch_pads: false
+        include_plate_hole_marking: true
+      where:
+        ref:
+          - ref: mcu
+          - ref: matrix_inner_bottom
+            affect: "y"
+      adjust:
+        rotate: 180
+        shift: [0, -4]
+    oled_cover_mounts:
+      what: ceoloide/mounting_hole_plated
+      where: [oled_cover_mount]
+    jst:
+      what: ceoloide/battery_connector_jst_ph_2
+      params:
+        reversible: true
+      where:
+        ref: oled_cover_mount_left
+        rotate: 90
+        shift: [0, 6.5]
     gndplane:
       what: ceoloide/utility_filled_zone
       params:
