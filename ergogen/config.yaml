@@ -3,8 +3,6 @@ units:
   kx: cx
   ky: cy
   # Padding Variables
-
-
   px: kx + 4
   py: ky + 4
   # padding to the right of keys for microcontroller
@@ -30,9 +28,7 @@ points:
         tags: [switch]
 
       columns:
-
         # Hide the first two mods and the last mod.
-
         # Provide a Sofle-like column stagger.
         outer:
           rows.mod.skip: true
@@ -156,7 +152,7 @@ points:
 
           - ref: matrix_index_top
           - ref: matrix_inner_top
-        - shift: [-0.1, 1.25]
+        - shift: [-0.3, 1.25]
     mount_bottom_left:
       key.tags: [mount]
       anchor:
@@ -176,7 +172,7 @@ points:
 
           - ref: matrix_index_bottom
           - ref: matrix_inner_bottom
-        - shift: [-0.1, 1.25]
+        - shift: [-0.3, 1.25]
     mount_thumb:
       key.tags: [mount]
       anchor:
@@ -322,114 +318,126 @@ outlines:
       radius: 1.1
     
       
-pcbs.main:
-  template: kicad8
-  outlines.main:
-    outline: outline
-  footprints:
-    switch:
-      what: ceoloide/switch_choc_v1_v2
-      where: [switch]
-      params:
-        reversible: true
-        choc_v2_support: false
-        include_corner_marks: true
-        from: "{{column_net}}"
-        to: "{{colrow}}"
+pcbs:
+  main:
+    template: kicad8
+    outlines.main:
+      outline: outline
+    footprints:
+      switch:
+        what: ceoloide/switch_choc_v1_v2
+        where: [switch]
+        params:
+          reversible: true
+          choc_v2_support: false
+          include_corner_marks: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
 
 
-    diode:
-      what: ceoloide/diode_tht_sod123
-      where: [switch]
-      params:
-        reversible: true
-        from: "{{colrow}}"
-        to: "{{row_net}}"
-      adjust:
-        shift: [8, -2.4]
-        rotate: 90
+      diode:
+        what: ceoloide/diode_tht_sod123
+        where: [switch]
+        params:
+          reversible: true
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [8, -2.4]
+          rotate: 90
 
-    controller:
-      what: ceoloide/mcu_nice_nano
-      params:
-        reversible: true
+      controller:
+        what: ceoloide/mcu_nice_nano
+        params:
+          reversible: true
+          reverse_mount: true
+          only_required_jumpers: true
+        where:
+          ref: mcu
+          shift: [0, moy]
+          # rotate: -90
+    
+      display:
+        what: ceoloide/display_nice_view
+        params:
+          reversible: true
+          MOSI: P2
+          SCK: P3
+          CS: P1
+        where:
+          ref: mcu
+          shift: [0, moy-2.8]
 
-        reverse_mount: true
-        only_required_jumpers: true
-      where:
-        ref: mcu
-        shift: [0, moy]
+      power_switch:
+        what: ceoloide/power_switch_smd_side
+        params:
+          reversible: true
+          include_silkscreen: false
+          from: "RAW"
+          to: "BAT_P"
+        where:
+          # edge of board
+          ref:
+            ref: matrix_index_home
+            shift: [pmc,0]
+          shift: [-1.86, 4.25]
+      reset:
+        what: ceoloide/reset_switch_smd_side
+        params:
+          reversible: true
+        where:
+          ref:
+            ref: matrix_index_home
+            shift: [pmc,0]
+          shift:
+            [-2.2,moy]
+          rotate: -90
+      encoder:
+        what: ceoloide/rotary_encoder_ec11_ec12
+        params:
+          include_momentary_switch_pads: false
+          include_plate_hole_marking: true
+        where:
+          ref: encoder
+        adjust:
+          rotate: 180
+      navswitch:
+        what: sqku_5way_nav_switch
+        params:
+          # The nav switch goes on the right half only
+          side: 'B'
+        where:
+          ref: encoder
+          rotate: -90
+      oled_cover_mounts:
+        what: ceoloide/mounting_hole_plated
+        where: [oled_cover_mount]
+      jst:
+        what: ceoloide/battery_connector_jst_ph_2
+        params:
+          reversible: true
+        where:
+          ref: oled_cover_mount_left
+          rotate: 90
+          shift: [0, 5.8]
 
-        # rotate: -90
-  
-    display:
-      what: ceoloide/display_nice_view
-      params:
-        reversible: true
-
-        MOSI: P2
-        SCK: P3
-        CS: P1
-      where:
-        ref: mcu
-        shift: [0, moy-2.8]
-
-    power_switch:
-      what: ceoloide/power_switch_smd_side
-      params:
-
-        reversible: true
-        include_silkscreen: false
-        from: "RAW"
-        to: "BAT_P"
-      where:
-        # edge of board
-        ref:
-          ref: matrix_index_home
-          shift: [pmc,0]
-        shift: [-1.86, 4.25]
-    reset:
-      what: ceoloide/reset_switch_smd_side
-
-      params:
-        reversible: true
-      where:
-        ref:
-          ref: matrix_index_home
-          shift: [pmc,0]
-        shift:
-          [-2.2,moy]
-
-        rotate: -90
-    encoder:
-      what: ceoloide/rotary_encoder_ec11_ec12
-      params:
-        include_momentary_switch_pads: false
-        include_plate_hole_marking: true
-      where:
-        ref: encoder
-      adjust:
-        rotate: 180
-    oled_cover_mounts:
-      what: ceoloide/mounting_hole_plated
-      where: [oled_cover_mount]
-    jst:
-      what: ceoloide/battery_connector_jst_ph_2
-      params:
-        reversible: true
-      where:
-        ref: oled_cover_mount_left
-        rotate: 90
-        shift: [0, 5.8]
-
-    mounts:
-      what: ceoloide/mounting_hole_npth
-      where: [mount]
-      params:
-        hole_size: 4.1
-
-        hole_drill: 4.1
-    gndplane:
-      what: ceoloide/utility_filled_zone
-      params:
-        side: "F&B"
+      mounts:
+        what: ceoloide/mounting_hole_npth
+        where: [mount]
+        params:
+          hole_size: 4.1
+          hole_drill: 4.1
+      gndplane:
+        what: ceoloide/utility_filled_zone
+        params:
+          remove_islands: 'below_area_limit'
+          side: "F&B"
+  top_plate:
+    outlines.main:
+      outline: plate
+    template: kicad8
+    footprints:
+      mounts:
+        what: ceoloide/mounting_hole_plated
+        where: [mount]
+      
