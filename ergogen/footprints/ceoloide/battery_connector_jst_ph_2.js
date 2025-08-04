@@ -156,145 +156,70 @@ module.exports = {
     const reversible_pads = `
         (pad "11" thru_hole oval (at -1 0 ${p.r}) (size 1.2 1.75) (drill 0.75) (layers "*.Cu" "*.Mask") ${local_nets[0].str})
         (pad "12" thru_hole oval (at 1 0 ${p.r}) (size 1.2 1.75) (drill 0.75) (layers "*.Cu" "*.Mask") ${local_nets[1].str})
-        (pad "21" smd custom (at -1 1.8 ${180 + p.r}) (size 0.1 0.1) (layers "F.Cu" "F.Mask" "F.Paste")
-            (clearance 0.1) (zone_connect 0)
-            (options (clearance outline) (anchor rect))
-            (primitives
-                (gr_poly
-                    (pts
-                        (xy 0.6 0.4)
-                        (xy -0.6 0.4)
-                        (xy -0.6 0.2)
-                        (xy 0 -0.4)
-                        (xy 0.6 0.2)
-                    )   
-                    (width 0)
-                    (fill yes)
-                )
+        (pad "21" smd custom (at -1 1.8 ${270 + p.r}) (size 0.1 0.1) (layers "F.Cu" "F.Mask" "F.Paste") ${local_nets[0]}
+          (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+              (xy -0.5 -0.625) (xy -0.25 -0.625) (xy 0.25 0) (xy -0.25 0.625) (xy -0.5 0.625)
             )
-            ${local_nets[0]}
+            (width 0) (fill yes)))
         )
-        (pad "31" smd custom (at -1 1.8 ${180 + p.r}) (size 0.1 0.1) (layers "B.Cu" "B.Mask" "B.Paste")
-            (clearance 0.1) (zone_connect 0)
-            (options (clearance outline) (anchor rect))
-            (primitives
-                (gr_poly
-                    (pts
-                        (xy 0.6 0.4)
-                        (xy -0.6 0.4)
-                        (xy -0.6 0.2)
-                        (xy 0 -0.4)
-                        (xy 0.6 0.2)
-                    )
-                    (width 0)
-                    (fill yes)
-                )
-            )
-            ${local_nets[0]}
+        (pad "31" smd custom (at -1 1.8 ${270 + p.r}) (size 0.1 0.1) (layers "B.Cu" "B.Mask" "B.Paste") ${local_nets[0]}
+          (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+              (xy -0.5 0.625) (xy -0.25 0.625) (xy 0.25 0) (xy -0.25 -0.625) (xy -0.5 -0.625)
+          ) (width 0) (fill yes)))
         )
-        (pad "22" smd custom (at 1 1.8 ${180 + p.r}) (size 0.1 0.1) (layers "F.Cu" "F.Mask" "F.Paste")
-            (clearance 0.1) (zone_connect 0)
-            (options (clearance outline) (anchor rect))
-            (primitives
-                (gr_poly
-                    (pts
-                        (xy 0.6 0.4)
-                        (xy -0.6 0.4)
-                        (xy -0.6 0.2)
-                        (xy 0 -0.4)
-                        (xy 0.6 0.2)
-                    )
-                    (width 0)
-                    (fill yes)
-                )
-            )
-            ${local_nets[1]}
+        (pad "22" smd custom (at 1 1.8 ${270 + p.r}) (size 0.1 0.1) (layers "F.Cu" "F.Mask" "F.Paste") ${local_nets[1]}
+          (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+              (xy -0.5 -0.625) (xy -0.25 -0.625) (xy 0.25 0) (xy -0.25 0.625) (xy -0.5 0.625)
+          ) (width 0) (fill yes)))
         )
-        (pad "32" smd custom (at 1 1.8 ${180 + p.r}) (size 0.1 0.1) (layers "B.Cu" "B.Mask" "B.Paste")
-            (clearance 0.1) (zone_connect 0)
-            (options (clearance outline) (anchor rect))
-            (primitives
-                (gr_poly
-                    (pts
-                        (xy 0.6 0.4)
-                        (xy -0.6 0.4)
-                        (xy -0.6 0.2)
-                        (xy 0 -0.4)
-                        (xy 0.6 0.2)
-                    )
-                    (width 0)
-                    (fill yes)
-                )
-            )
-            ${local_nets[1]}
+        (pad "32" smd custom (at 1 1.8 ${270 + p.r}) (size 0.1 0.1) (layers "B.Cu" "B.Mask" "B.Paste") ${local_nets[1]}
+          (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+              (xy -0.5 0.625) (xy -0.25 0.625) (xy 0.25 0) (xy -0.25 -0.625) (xy -0.5 -0.625)
+          ) (width 0) (fill yes)))
         )
-        (pad "1" smd custom (at -1 2.816 ${180 + p.r}) (size 1.2 0.5) (layers "F.Cu" "F.Mask" "F.Paste") ${p.BAT_P.str}
-            (clearance 0.1) (zone_connect 0)
-            (options (clearance outline) (anchor rect))
-            (primitives
-                (gr_poly
-                    (pts
-                        (xy 0.6 0)
-                        (xy -0.6 0)
-                        (xy -0.6 1)
-                        (xy 0 0.4)
-                        (xy 0.6 1)
-                    )
-                    (width 0)
-                    (fill yes)
-                )
-            )
+        (pad "1" smd custom (at -1 2.475 ${270 + p.r}) (size 0.2 0.2) (layers "F.Cu" "F.Mask" "F.Paste") ${p.BAT_P.str}
+          (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+              (xy -0.65 -0.625) (xy 0.5 -0.625) (xy 0.5 0.625) (xy -0.65 0.625) (xy -0.15 0)
+          ) (width 0) (fill yes)))
         )
-        (pad "1" smd custom (at 1 2.816 ${180 + p.r}) (size 1.2 0.5) (layers "B.Cu" "B.Mask" "B.Paste") ${p.BAT_P.str}
-            (clearance 0.1) (zone_connect 0)
-            (options (clearance outline) (anchor rect))
-            (primitives
-                (gr_poly
-                    (pts
-                        (xy 0.6 0)
-                        (xy -0.6 0)
-                        (xy -0.6 1)
-                        (xy 0 0.4)
-                        (xy 0.6 1)
-                    )
-                    (width 0)
-                    (fill yes)
-                )
-            )
+        (pad "1" smd custom (at 1 2.475 ${270 + p.r}) (size 0.2 0.2) (layers "B.Cu" "B.Mask" "B.Paste") ${p.BAT_P.str}
+          (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+              (xy -0.65 0.625) (xy 0.5 0.625) (xy 0.5 -0.625) (xy -0.65 -0.625) (xy -0.15 0)
+          ) (width 0) (fill yes)))
         )
-        (pad "2" smd custom (at -1 2.816 ${180 + p.r}) (size 1.2 0.5) (layers "B.Cu" "B.Mask" "B.Paste") ${p.BAT_N.str}
-            (clearance 0.1) (zone_connect 0)
-            (options (clearance outline) (anchor rect))
-            (primitives
-                (gr_poly
-                    (pts
-                        (xy 0.6 0)
-                        (xy -0.6 0)
-                        (xy -0.6 1)
-                        (xy 0 0.4)
-                        (xy 0.6 1)
-                    )
-                    (width 0)
-                    (fill yes)
-                )
-            )
+        (pad "2" smd custom (at -1 2.475 ${270 + p.r}) (size 0.2 0.2) (layers "B.Cu" "B.Mask" "B.Paste") ${p.BAT_N.str}
+          (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+              (xy -0.65 -0.625) (xy 0.5 -0.625) (xy 0.5 0.625) (xy -0.65 0.625) (xy -0.15 0)
+          ) (width 0) (fill yes)))
         )
-        (pad "2" smd custom (at 1 2.816 ${180 + p.r}) (size 1.2 0.5) (layers "F.Cu" "F.Mask" "F.Paste") ${p.BAT_N.str}
-            (clearance 0.1) (zone_connect 0)
-            (options (clearance outline) (anchor rect))
-            (primitives
-                (gr_poly
-                    (pts
-                        (xy 0.6 0)
-                        (xy -0.6 0)
-                        (xy -0.6 1)
-                        (xy 0 0.4)
-                        (xy 0.6 1)
-                    )
-                    (width 0)
-                    (fill yes)
-                )
-            ) 
+        (pad "2" smd custom (at 1 2.475 ${270 + p.r}) (size 0.2 0.2) (layers "F.Cu" "F.Mask" "F.Paste") ${p.BAT_N.str}
+          (zone_connect 2)
+          (options (clearance outline) (anchor rect))
+          (primitives
+            (gr_poly (pts
+              (xy -0.65 0.625) (xy 0.5 0.625) (xy 0.5 -0.625) (xy -0.65 -0.625) (xy -0.15 0)
+          ) (width 0) (fill yes)))
         )
         `
     const standard_closing = `
