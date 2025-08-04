@@ -361,8 +361,8 @@ pcbs:
         what: ceoloide/display_nice_view
         params:
           reversible: true
-          MOSI: P2
-          SCK: P3
+          MOSI: P21
+          SCK: P20
           CS: P1
         where:
           ref: mcu
@@ -406,8 +406,29 @@ pcbs:
         params:
           # The nav switch goes on the right half only
           side: 'B'
+          # the common pin is routed to P4, which will act as another column
+          # the other pins are rows
+          A: P9
+          B: P8
+          C: P7
+          CTR: nav_diode
+          D: P5
+          CMN: P4
         where:
           ref: encoder
+          rotate: -90
+      navswitch_diode:
+        # For simplicity only the center line has a diode, as it's
+        # physically impossible to press two directions on the switch
+        # at the same time. Saves space and routing effort.
+        what: ceoloide/diode_tht_sod123
+        params:
+          side: 'F'
+          from: "nav_diode"
+          to: "P6"
+        where:
+          ref: encoder
+          shift: [-10, 4]
           rotate: -90
       oled_cover_mounts:
         what: ceoloide/mounting_hole_plated
@@ -420,7 +441,6 @@ pcbs:
           ref: oled_cover_mount_left
           rotate: 90
           shift: [0, 5.8]
-
       mounts:
         what: ceoloide/mounting_hole_npth
         where: [mount]

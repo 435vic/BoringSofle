@@ -2,12 +2,12 @@ module.exports = {
   params: {
     designator: 'SW',
     side: 'F',
-    A: { type: 'net', value: 'undefined' },
-    B: { type: 'net', value: 'undefined' },
-    C: { type: 'net', value: 'undefined' },
-    D: { type: 'net', value: 'undefined' },
-    CTR: { type: 'net', value: 'undefined' },
-    CMN: { type: 'net', value: 'undefined' },
+    A: { type: 'net', value: undefined },
+    B: { type: 'net', value: undefined },
+    C: { type: 'net', value: undefined },
+    D: { type: 'net', value: undefined },
+    CTR: { type: 'net', value: undefined },
+    CMN: { type: 'net', value: undefined },
   },
   body: p => {
     // Middle pads are offset from the center to enforce correct orientation
@@ -19,13 +19,13 @@ module.exports = {
 
     const pads = `
   ${'' /* Corner pads - 1.9 diameter, 1.2 drill */}
-  (pad "A" thru_hole circle (at ${left}5.15 3.25 ${p.r}) (size 1.9 1.9) (drill 1.2) (layers "*.Cu" "*.Mask"))
-  (pad "Center" thru_hole circle (at ${right}5.15 3.25 ${p.r}) (size 1.9 1.9) (drill 1.2) (layers "*.Cu" "*.Mask"))
-  (pad "C" thru_hole circle (at ${left}5.15 -3.25 ${p.r}) (size 1.9 1.9) (drill 1.2) (layers "*.Cu" "*.Mask"))
-  (pad "Common" thru_hole circle (at ${right}5.15 -3.25 ${p.r}) (size 1.9 1.9) (drill 1.2) (layers "*.Cu" "*.Mask"))
+  (pad "A" thru_hole circle (at ${left}5.15 3.25 ${p.r}) (size 1.9 1.9) (drill 1.2) (layers "*.Cu" "*.Mask") ${p.A.str})
+  (pad "CTR" thru_hole circle (at ${right}5.15 3.25 ${p.r}) (size 1.9 1.9) (drill 1.2) (layers "*.Cu" "*.Mask") ${p.CTR.str})
+  (pad "C" thru_hole circle (at ${left}5.15 -3.25 ${p.r}) (size 1.9 1.9) (drill 1.2) (layers "*.Cu" "*.Mask") ${p.C.str})
+  (pad "CMN" thru_hole circle (at ${right}5.15 -3.25 ${p.r}) (size 1.9 1.9) (drill 1.2) (layers "*.Cu" "*.Mask") ${p.CMN.str})
   ${'' /* Side pads - 1.7 dia, 1 drill */}
-  (pad "B" thru_hole circle (at ${left}5.15 ${middle_pads_y} ${p.r}) (size 1.5 1.5) (drill 1) (layers "*.Cu" "*.Mask"))
-  (pad "D" thru_hole circle (at ${right}5.15 ${middle_pads_y} ${p.r}) (size 1.5 1.5) (drill 1) (layers "*.Cu" "*.Mask"))
+  (pad "B" thru_hole circle (at ${left}5.15 ${middle_pads_y} ${p.r}) (size 1.5 1.5) (drill 1) (layers "*.Cu" "*.Mask") ${p.B.str})
+  (pad "D" thru_hole circle (at ${right}5.15 ${middle_pads_y} ${p.r}) (size 1.5 1.5) (drill 1) (layers "*.Cu" "*.Mask") ${p.D.str})
     `
 
     const template = `
