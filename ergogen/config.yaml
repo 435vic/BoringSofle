@@ -64,9 +64,7 @@ points:
           row_net: P8
         home:
           row_net: P7
-
         top:
-
           row_net: P6
         num:
           row_net: P5
@@ -74,7 +72,6 @@ points:
     thumbs:
       # Choc spacing
       key:
-
         padding: 1ky
 
         spread: 1kx
@@ -82,7 +79,6 @@ points:
 
       # Place thumbs where the inner mod would go.
       anchor:
-
         ref: matrix_inner_mod
         shift: [2, -2]
       columns:
@@ -93,30 +89,25 @@ points:
             column_net: P14
         # Spacebar uses a 1.5 wide key.
         space:
-
           key:
             width: 1.5kx
             splay: 75
-            shift: [0,-2]
+            shift: [0, -2]
             column_net: P16
       rows:
         # Thumbs only have one row.
         cluster:
-
           row_net: P9
     mcu:
       anchor:
-
         ref.aggregate.parts:
-
           - ref: matrix_inner_num
           - - ref: matrix_inner_num
 
             - ref: matrix_index_num
-              shift: [pmc+0.5px,0]
+              shift: [pmc+0.5px, 0]
               affect: "x"
     oled_cover_mount_left:
-
       key.tags: [oled_cover_mount]
 
       anchor:
@@ -134,44 +125,41 @@ points:
           shift: [0, 6.8]
         - shift: [8, 0]
     mount_top_left:
-
       key.tags: [mount]
       anchor:
         - ref.aggregate.parts:
-          - ref: matrix_outer_num
-          - ref: matrix_pinky_num
-          - ref: matrix_pinky_top
-          - ref: matrix_outer_top
+            - ref: matrix_outer_num
+            - ref: matrix_pinky_num
+            - ref: matrix_pinky_top
+            - ref: matrix_outer_top
     mount_top_right:
       key.tags: [mount]
       anchor:
-
         - ref.aggregate.parts:
-          - ref: matrix_inner_num
-          - ref: matrix_index_num
+            - ref: matrix_inner_num
+            - ref: matrix_index_num
 
-          - ref: matrix_index_top
-          - ref: matrix_inner_top
+            - ref: matrix_index_top
+            - ref: matrix_inner_top
         - shift: [-0.3, 1.25]
     mount_bottom_left:
       key.tags: [mount]
       anchor:
         - ref.aggregate.parts:
-          - ref: matrix_outer_home
-          - ref: matrix_pinky_home
-          - ref: matrix_pinky_bottom
-          - ref: matrix_outer_bottom
+            - ref: matrix_outer_home
+            - ref: matrix_pinky_home
+            - ref: matrix_pinky_bottom
+            - ref: matrix_outer_bottom
     mount_bottom_right:
       key.tags: [mount]
       anchor:
         - ref.aggregate.parts:
+            - ref: matrix_inner_home
 
-          - ref: matrix_inner_home
+            - ref: matrix_index_home
 
-          - ref: matrix_index_home
-
-          - ref: matrix_index_bottom
-          - ref: matrix_inner_bottom
+            - ref: matrix_index_bottom
+            - ref: matrix_inner_bottom
         - shift: [-0.3, 1.25]
     mount_thumb:
       key.tags: [mount]
@@ -185,13 +173,12 @@ points:
           affect: "y"
         - shift: [0, -5.3]
 
-
 outlines:
   _keys_1u:
     - what: rectangle
 
       where: [[switch, -thumbs_space_cluster]]
-      size: [kx-0.5,ky-0.5]
+      size: [kx-0.5, ky-0.5]
   _key_thumb:
     - what: rectangle
       where: thumbs_space_cluster
@@ -200,12 +187,11 @@ outlines:
     - "_keys_1u"
     - "_key_thumb"
 
-
   _micro:
     - what: rectangle
       where:
-          ref: mcu
-          # rotate: -90
+        ref: mcu
+        # rotate: -90
       adjust:
         shift: [0, -10]
       size: [mx, my]
@@ -222,43 +208,42 @@ outlines:
       operation: stack
       points:
         - ref: matrix_index_num
-          shift: [0.5px,0.5ky]
+          shift: [0.5px, 0.5ky]
         - ref: matrix_index_num
 
-          shift: [pmc,0.5ky]
+          shift: [pmc, 0.5ky]
 
         - shift: [0, -4.2ky]
 
         - ref: thumbs_space_cluster
-          shift: [0.65px,-0.5py]
+          shift: [0.65px, -0.5py]
         - ref: thumbs_space_cluster
-          shift: [-0.75px,-0.5py]
+          shift: [-0.75px, -0.5py]
         - ref: thumbs_space_cluster
-          shift: [-0.75px,0.5py]
+          shift: [-0.75px, 0.5py]
 
         - ref: matrix_index_mod
           shift: [2, -0.5py]
   _left_side:
-
     - what: polygon
       operation: stack
       points:
         - ref: matrix_outer_num
-          shift: [-0.5px,0.5py]
+          shift: [-0.5px, 0.5py]
         - ref: matrix_middle_num
 
-          shift: [-0.75px,0.5py]
+          shift: [-0.75px, 0.5py]
         - ref: matrix_middle_num
-          shift: [0.75px,0.5py]
+          shift: [0.75px, 0.5py]
         - ref: matrix_inner_num
-          shift: [0.5px,0.5py]
+          shift: [0.5px, 0.5py]
         - ref: matrix_index_mod
-          shift: [0.2px,-0.5py]
+          shift: [0.2px, -0.5py]
         - ref: matrix_ring_mod
 
-          shift: [-0.3px,-0.5py]
+          shift: [-0.3px, -0.5py]
         - ref: matrix_outer_bottom
-          shift: [-0.5px,-0.5py]
+          shift: [-0.5px, -0.5py]
 
   _plate_mcu_cutout:
     - what: polygon
@@ -274,7 +259,6 @@ outlines:
         - shift: [-40, 0]
 
   _encoder_cutout:
-
     - what: rectangle
       where:
         ref: encoder
@@ -286,10 +270,7 @@ outlines:
       size: [12, 2.5]
       adjust.shift: [0, 6]
 
-
-
   outline:
-
     - "_left_side"
     - operation: add
       name: "_right_side"
@@ -316,8 +297,7 @@ outlines:
       what: circle
       where: [oled_cover_mount]
       radius: 1.1
-    
-      
+
 pcbs:
   main:
     template: kicad8
@@ -333,7 +313,15 @@ pcbs:
           include_corner_marks: true
           from: "{{column_net}}"
           to: "{{colrow}}"
-
+          switch_3dmodel_filename: "${KICAD_USER_3DMODEL_DIR}/infused-kim/Choc_V1_Switch.step"
+          switch_3dmodel_xyz_rotation: [0, 180, 180]
+          switch_3dmodel_xyz_offset: [0, 0, -1.6]
+          keycap_3dmodel_filename: "${KICAD_USER_3DMODEL_DIR}/infused-kim/Choc_V1_Keycap_MBK_Black_1u.step"
+          keycap_3dmodel_xyz_rotation: [0, 180, 0]
+          keycap_3dmodel_xyz_offset: [0, 0, -8.2]
+          hotswap_3dmodel_filename: "${KICAD_USER_3DMODEL_DIR}/infused-kim/Choc_V1_Hotswap.step"
+          hotswap_3dmodel_xyz_rotation: [0, 180, 180]
+          hotswap_3dmodel_xyz_offset: [0, 0, -1.6]
 
       diode:
         what: ceoloide/diode_tht_sod123
@@ -342,8 +330,11 @@ pcbs:
           reversible: true
           from: "{{colrow}}"
           to: "{{row_net}}"
+          diode_3dmodel_filename: "${KICAD_USER_3DMODEL_DIR}/infused-kim/Diode_1N4148W.step"
+          diode_3dmodel_xyz_rotation: [-90, 180, 180]
+          diode_3dmodel_xyz_offset: [0, 0, -2.3]
         adjust:
-          shift: [8, -2.4]
+          shift: [8, -3]
           rotate: 90
 
       controller:
@@ -352,21 +343,31 @@ pcbs:
           reversible: true
           reverse_mount: true
           only_required_jumpers: true
+          mcu_3dmodel_filename: "${KICAD_USER_3DMODEL_DIR}/infused-kim/Nice_Nano_V2.step"
+          mcu_3dmodel_xyz_offset: [0, 0, 5.0]
         where:
           ref: mcu
           shift: [0, moy]
-          # rotate: -90
-    
+
       display:
         what: ceoloide/display_nice_view
         params:
           reversible: true
+          invert_jumpers_position: true
           MOSI: P21
           SCK: P20
           CS: P1
+          niceview_3dmodel_filename: "${KICAD_USER_3DMODEL_DIR}/infused-kim/Nice_View.step"
+          pin_header_3dmodel_filename: "${KICAD_USER_3DMODEL_DIR}/infused-kim/PinHeader_2.54mm_1x-5.step"
+          pin_socket_3dmodel_filename: "${KICAD_USER_3DMODEL_DIR}/infused-kim/PinSocket_2.54mm_5mm_1x-5.step"
+          niceview_3dmodel_xyz_offset: [-7, -18, 6.8]
+          pin_header_3dmodel_xyz_rotation: [0, 0, -90]
+          pin_header_3dmodel_xyz_offset: [0, -16.7, 3]
+          pin_socket_3dmodel_xyz_rotation: [-90, 0, 0]
+          pin_socket_3dmodel_xyz_offset: [-5.1, -16.7, 0]
         where:
           ref: mcu
-          shift: [0, moy-2.8]
+          shift: [0, moy-1.9]
 
       power_switch:
         what: ceoloide/power_switch_smd_side
@@ -375,28 +376,32 @@ pcbs:
           include_silkscreen: false
           from: "RAW"
           to: "BAT_P"
+          switch_3dmodel_filename: "${KICAD_USER_3DMODEL_DIR}/infused-kim/Switch_Power.step"
+          switch_3dmodel_xyz_rotation: [-90, 0, -90]
         where:
           # edge of board
           ref:
             ref: matrix_index_home
-            shift: [pmc,0]
+            shift: [pmc, 0]
           shift: [-1.86, 4.25]
       reset:
         what: ceoloide/reset_switch_smd_side
         params:
           reversible: true
+          reset_switch_3dmodel_filename: "${KICAD_USER_3DMODEL_DIR}/infused-kim/Switch_Reset.step"
+          reset_switch_3dmodel_xyz_rotation: [-90, 0, 0]
         where:
           ref:
             ref: matrix_index_home
-            shift: [pmc,0]
-          shift:
-            [-2.2,moy]
+            shift: [pmc, 0]
+          shift: [-2.2, moy]
           rotate: -90
       encoder:
         what: ceoloide/rotary_encoder_ec11_ec12
         params:
           include_momentary_switch_pads: false
           include_plate_hole_marking: true
+          encoder_3dmodel_filename: "${KICAD_USER_3DMODEL_DIR}/Encoder_EC12E.step"
         where:
           ref: encoder
         adjust:
@@ -405,7 +410,7 @@ pcbs:
         what: sqku_5way_nav_switch
         params:
           # The nav switch goes on the right half only
-          side: 'B'
+          side: "B"
           # the common pin is routed to P4, which will act as another column
           # the other pins are rows
           A: P9
@@ -423,9 +428,12 @@ pcbs:
         # at the same time. Saves space and routing effort.
         what: ceoloide/diode_tht_sod123
         params:
-          side: 'F'
+          side: "F"
           from: "nav_diode"
           to: "P6"
+          diode_3dmodel_filename: "${KICAD_USER_3DMODEL_DIR}/infused-kim/Diode_1N4148W.step"
+          diode_3dmodel_xyz_rotation: [-90, 0, 0]
+          diode_3dmodel_xyz_offset: [0, 0, 0.7]
         where:
           ref: encoder
           shift: [-10, 4]
@@ -450,7 +458,7 @@ pcbs:
       gndplane:
         what: ceoloide/utility_filled_zone
         params:
-          remove_islands: 'below_area_limit'
+          remove_islands: "below_area_limit"
           side: "F&B"
   top_plate:
     outlines.main:
@@ -460,4 +468,3 @@ pcbs:
       mounts:
         what: ceoloide/mounting_hole_plated
         where: [mount]
-      
