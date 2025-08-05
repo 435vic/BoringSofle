@@ -267,7 +267,7 @@ outlines:
       what: rectangle
       where:
         ref: encoder
-      size: [12, 2.5]
+      size: [12, 4.5]
       adjust.shift: [0, 6]
 
   outline:
@@ -286,6 +286,11 @@ outlines:
     - operation: subtract
       name: "_encoder_cutout"
       fillet: 0.8
+    - "-_plate_mounts"
+
+  bottom_plate:
+    - "outline"
+    - "-_plate_keys"
     - "-_plate_mounts"
 
   oled_cover:
