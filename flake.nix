@@ -16,6 +16,9 @@
       default = pkgs.mkShell {
         packages = [
           pkgs.ergogen
+          # for footprint lsp
+          pkgs.typescript
+          pkgs.nodejs_22
         ];
       };
     });
