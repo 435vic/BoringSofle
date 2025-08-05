@@ -103,18 +103,16 @@ points:
         ref.aggregate.parts:
           - ref: matrix_inner_num
           - - ref: matrix_inner_num
-
             - ref: matrix_index_num
               shift: [pmc+0.5px, 0]
               affect: "x"
     oled_cover_mount_left:
       key.tags: [oled_cover_mount]
-
       anchor:
         - ref: mcu
         - ref: matrix_inner_bottom
           affect: "y"
-          shift: [0, 6.8]
+          shift: [0, 7.4]
         - shift: [-8, 0]
     oled_cover_mount_right:
       key.tags: [oled_cover_mount]
@@ -122,7 +120,7 @@ points:
         - ref: mcu
         - ref: matrix_inner_bottom
           affect: "y"
-          shift: [0, 6.8]
+          shift: [0, 7.4]
         - shift: [8, 0]
     mount_top_left:
       key.tags: [mount]
@@ -155,9 +153,7 @@ points:
       anchor:
         - ref.aggregate.parts:
             - ref: matrix_inner_home
-
             - ref: matrix_index_home
-
             - ref: matrix_index_bottom
             - ref: matrix_inner_bottom
         - shift: [-0.45, 1.25]
@@ -171,12 +167,12 @@ points:
         - ref: mcu
         - ref: matrix_inner_bottom
           affect: "y"
-        - shift: [0, -5.3]
+        - shift: [0, -1.5]
+        - rotate: 90
 
 outlines:
   _keys_1u:
     - what: rectangle
-
       where: [[switch, -thumbs_space_cluster]]
       size: [kx-0.5, ky-0.5]
   _key_thumb:
@@ -210,18 +206,14 @@ outlines:
         - ref: matrix_index_num
           shift: [0.5px, 0.5ky]
         - ref: matrix_index_num
-
           shift: [pmc, 0.5ky]
-
         - shift: [0, -4.2ky]
-
         - ref: thumbs_space_cluster
           shift: [0.65px, -0.5py]
         - ref: thumbs_space_cluster
           shift: [-0.75px, -0.5py]
         - ref: thumbs_space_cluster
           shift: [-0.75px, 0.5py]
-
         - ref: matrix_index_mod
           shift: [2, -0.5py]
   _left_side:
@@ -231,7 +223,6 @@ outlines:
         - ref: matrix_outer_num
           shift: [-0.5px, 0.5py]
         - ref: matrix_middle_num
-
           shift: [-0.75px, 0.5py]
         - ref: matrix_middle_num
           shift: [0.75px, 0.5py]
@@ -240,7 +231,6 @@ outlines:
         - ref: matrix_index_mod
           shift: [0.2px, -0.5py]
         - ref: matrix_ring_mod
-
           shift: [-0.3px, -0.5py]
         - ref: matrix_outer_bottom
           shift: [-0.5px, -0.5py]
@@ -253,7 +243,7 @@ outlines:
           - ref: matrix_inner_bottom
             affect: "y"
             shift: [0, 6.6]
-          - shift: [-12, -2]
+          - shift: [-11.9, -2]
         - shift: [40, 0]
         - shift: [0, 80]
         - shift: [-40, 0]
@@ -280,17 +270,38 @@ outlines:
     - "-keys"
     # - "-_micro"
   plate:
-    - "outline"
-    - "-_plate_keys"
-    - "-_plate_mcu_cutout"
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_index_num
+          shift: [0.5px, 0.5ky]
+        - - ref: mcu
+          - ref: matrix_inner_num
+            affect: "y"
+            shift: [0, 10.5]
+          - shift: [-11.9, 0]
+        - ref: matrix_inner_bottom
+          affect: "y"
+          shift: [0, -6]
+        - ref: thumbs_space_cluster
+          shift: [0.5px, -0.5py]
+        - ref: thumbs_space_cluster
+          shift: [-0.75px, -0.5py]
+        - ref: thumbs_space_cluster
+          shift: [-0.75px, 0.5py]
+        - ref: matrix_index_mod
+          shift: [2, -0.5py]
+    - operation: add
+      name: "_left_side"
+      fillet: 2
     - operation: subtract
-      name: "_encoder_cutout"
+      name: "_plate_keys"
       fillet: 0.8
     - "-_plate_mounts"
+    - "-_encoder_cutout"
 
   bottom_plate:
     - "outline"
-    - "-_plate_keys"
     - "-_plate_mounts"
 
   oled_cover:
@@ -302,22 +313,35 @@ outlines:
       what: circle
       where: [oled_cover_mount]
       radius: 1.1
+  _encoder_clearance:
+    - what: circle
+      where.ref: encoder
+      radius: 10
 
 pcbs:
   main:
     template: kicad8
-    outlines.main:
-      outline: outline
+    outlines:
+      - outline: outline
+      - outline: plate
+        layer: "Eco1.User"
+      - outline: oled_cover
+        layer: "Eco1.User"
+      - outline: "_encoder_clearance"
+        layer: "Eco1.User"
     footprints:
       switch:
         what: ceoloide/switch_choc_v1_v2
-        where: [switch]
+        where: [[switch, -thumbs_space_cluster]]
         params:
           reversible: true
           choc_v2_support: false
           include_corner_marks: true
           # built in traces and vias violate jlcpcb capabilities
           include_traces_vias: false
+          include_keycap: true
+          keycap_width: 1kx
+          keycap_height: 1ky
           from: "{{column_net}}"
           to: "{{colrow}}"
           switch_3dmodel_filename: "${KICAD_USER_3DMODEL_DIR}/infused-kim/Choc_V1_Switch.step"
@@ -329,6 +353,14 @@ pcbs:
           hotswap_3dmodel_filename: "${KICAD_USER_3DMODEL_DIR}/infused-kim/Choc_V1_Hotswap.step"
           hotswap_3dmodel_xyz_rotation: [0, 180, 180]
           hotswap_3dmodel_xyz_offset: [0, 0, -1.6]
+      switch_thumb:
+        $extends: pcbs.main.footprints.switch
+        where: thumbs_space_cluster
+        params:
+          keycap_width: 1.5kx
+          keycap_3dmodel_filename: "${KICAD_USER_3DMODEL_DIR}/MBK_Keycap_1.5u.step"
+          keycap_3dmodel_xyz_rotation: [0, 180, 0]
+          keycap_3dmodel_xyz_offset: [27, 0, -8.2]
 
       diode:
         what: ceoloide/diode_tht_sod123
@@ -465,7 +497,7 @@ pcbs:
         where:
           ref: oled_cover_mount_left
           rotate: 90
-          shift: [0, 5.8]
+          shift: [0, 8]
       mounts:
         what: ceoloide/mounting_hole_npth
         where: [mount]
@@ -542,17 +574,17 @@ pcbs:
             - "F(-7.62,10.16)(-12.5,15.04)(-12.5,30.45)(-13.325,31.275)V(-14.9,32.85)F(-13.325,31.275)"  # net: P7
             - "F(-7.62,12.7)(-11.9,16.98)(-11.9,46.85)(-14.9,49.85)"  # net: P8
             # encoder
-            - "F(-3.25,55.65)(-3.25,48.95)(-11.3,40.9)(-11.3,18.92)(-7.62,15.24)"  # net: P9
-            - "B(-12.7,-1.15)(-11.898,-0.348)(-11.898,42.6)(-10.498,44)(-1.9,44)(-0.45,45.35)"  # net: P5
-            - "B(-7.62,2.54)(-9,3.92)(-9,16.9)(-8.6,17.3)V(-8.6,18)(-10.7,20.1)(-10.7,39.9)(-5.25,45.35)(-3.25,45.35)"  # net: P4
-            - "B(-7.62,-2.54)(-1E+1,-0.16)(-1E+1,19.7)(-2.7,27)(-2.7,30.4)V"  # net: P2
-            - "F(-2.5,30.6)(-2.5,43)"  # net: P2
-            - "B(-7.62,0)(-9.5,1.88)(-9.5,19.55)(-1.25,27.8)(2.3,27.8)V"  # net: P3
-            - "F(2.5,28)(2.5,43)"  # net: P3
-            - "B(3.25,55.65)(0.699,53.099)(-9.5339,53.099)(-12.299,50.3339)(-12.299,18.451)(-14.9,15.85)"  # net: P6
-            - "B(-0.45,55.65)(-2.5,53.5)(-9.7,53.5)(-12.7,50.5)(-12.7,35.05)(-14.9,32.85)"  # net: P7
+            # - "F(-3.25,55.65)(-3.25,48.95)(-11.3,40.9)(-11.3,18.92)(-7.62,15.24)"  # net: P9
+            # - "B(-12.7,-1.15)(-11.898,-0.348)(-11.898,42.6)(-10.498,44)(-1.9,44)(-0.45,45.35)"  # net: P5
+            # - "B(-7.62,2.54)(-9,3.92)(-9,16.9)(-8.6,17.3)V(-8.6,18)(-10.7,20.1)(-10.7,39.9)(-5.25,45.35)(-3.25,45.35)"  # net: P4
+            # - "B(-7.62,-2.54)(-1E+1,-0.16)(-1E+1,19.7)(-2.7,27)(-2.7,30.4)V"  # net: P2
+            # - "F(-2.5,30.6)(-2.5,43)"  # net: P2
+            # - "B(-7.62,0)(-9.5,1.88)(-9.5,19.55)(-1.25,27.8)(2.3,27.8)V"  # net: P3
+            # - "F(2.5,28)(2.5,43)"  # net: P3
+            # - "B(3.25,55.65)(0.699,53.099)(-9.5339,53.099)(-12.299,50.3339)(-12.299,18.451)(-14.9,15.85)"  # net: P6
+            # - "B(-0.45,55.65)(-2.5,53.5)(-9.7,53.5)(-12.7,50.5)(-12.7,35.05)(-14.9,32.85)"  # net: P7
             # navswitch
-            - "F(7.85,26.95)(6.259,25.359)(6.259,-0.93532)(2.6,-4.59432)(2.6,-6.82)(3.4,-7.62)"  # net: RST
+            # - "F(7.85,26.95)(6.259,25.359)(6.259,-0.93532)(2.6,-4.59432)(2.6,-6.82)(3.4,-7.62)"  # net: RST
       jst_routes_power:
         what: ceoloide/utility_router
         where:
@@ -560,7 +592,7 @@ pcbs:
         params:
           locked: false
           routes:
-            - "B(1,2.475)(1,8.7)(7.16,14.86)(7.16,15.46)"  # net: BAT_P
+            - "B(1,2.475)(1,8.7)(4.4,12.1)(4.4,15.5)"  # net: BAT_P
             - "F(-1,2.475)(-1,4.2)(-0.6,4.6)V(1,6.2)"  # net: BAT_P
       power_switch_routes:
         what: ceoloide/utility_router
@@ -722,8 +754,9 @@ pcbs:
             - "(5.7186,4.0387)VB(8,4.65)F(5.7186,4.0387)"  # net: P9
       switch_route_mod_row_navswitch:
         what: ceoloide/utility_router
-        where:
-          $extends: pcbs.main.footprints.navswitch.where
+        where: false
+        # where:
+        #   $extends: pcbs.main.footprints.navswitch.where
         params:
           locked: false
           net: P9
@@ -741,8 +774,9 @@ pcbs:
             - "(4.6,-0.9)VB(3.7,-0)(1.65,-0)F(3.7,-0)(4.6,-0.9)"
       navswitch_diode_route:
         what: ceoloide/utility_router
-        where:
-          $extends: pcbs.main.footprints.navswitch_diode.where
+        where: false
+        # where:
+        #   $extends: pcbs.main.footprints.navswitch_diode.where
         adjust:
           $extends: pcbs.main.footprints.navswitch_diode.adjust
         params:
