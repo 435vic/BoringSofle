@@ -141,7 +141,7 @@ points:
 
             - ref: matrix_index_top
             - ref: matrix_inner_top
-        - shift: [-0.3, 1.25]
+        - shift: [-0.45, 1.25]
     mount_bottom_left:
       key.tags: [mount]
       anchor:
@@ -160,7 +160,7 @@ points:
 
             - ref: matrix_index_bottom
             - ref: matrix_inner_bottom
-        - shift: [-0.3, 1.25]
+        - shift: [-0.45, 1.25]
     mount_thumb:
       key.tags: [mount]
       anchor:
