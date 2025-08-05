@@ -14,8 +14,8 @@ module.exports = {
     const middle_pads_y = p.side == 'F' ? 0.45 : -0.45;
 
     // Flip pins if side is B
-    const right = p.side == 'B' ? '-' : '';
-    const left = p.side == 'F' ? '-' : '';
+    const right = p.side == 'F' ? '-' : '';
+    const left = p.side == 'B' ? '-' : '';
 
     const pads = `
   ${'' /* Corner pads - 1.9 diameter, 1.2 drill */}

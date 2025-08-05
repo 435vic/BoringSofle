@@ -423,15 +423,15 @@ pcbs:
           side: "B"
           # the common pin is routed to P4, which will act as another column
           # the other pins are rows
-          A: P9
-          B: P8
-          C: P7
+          A: P6
+          B: P7
+          C: P9
           CTR: nav_diode
           D: P5
           CMN: P4
         where:
           ref: encoder
-          rotate: -90
+          rotate: 90
       navswitch_diode:
         # For simplicity only the center line has a diode, as it's
         # physically impossible to press two directions on the switch
@@ -440,14 +440,16 @@ pcbs:
         params:
           side: "F"
           from: "nav_diode"
-          to: "P6"
+          to: "P8"
           diode_3dmodel_filename: "${KICAD_USER_3DMODEL_DIR}/infused-kim/Diode_1N4148W.step"
           diode_3dmodel_xyz_rotation: [-90, 0, 0]
           diode_3dmodel_xyz_offset: [0, 0, 0.7]
         where:
-          ref: encoder
-          shift: [-10, 4]
-          rotate: -90
+          ref: matrix_inner_bottom
+          $extends: pcbs.main.footprints.diode.adjust
+        adjust:
+          shift: [0, -5]
+
       oled_cover_mounts:
         what: ceoloide/mounting_hole_plated
         where: [oled_cover_mount]
@@ -520,6 +522,32 @@ pcbs:
             - "B(7.62,7.62)(5.82,7.62)(5.1,6.9)V(1.5,3.3)(1.5,-14.4)(0.256,-15.644)(-15.77172,-15.644)(-16.03438,-15.90666)(-42.22376,-20.2)(-67.675,-20.2)(-73.625,-14.25)"  # net: P15
             - "B(7.62,5.08)(5.48,5.08)(5.1,4.7)V(1.919,1.519)(1.919,-14.481)(0.428,-15.972)(-15.63586,-15.972)(-15.87712,-16.21326)(-42.26728,-20.53951)(-42.6541,-20.571)(-75.15299,-20.571)(-75.53263,-20.54182)(-81.21132,-19.66368)(-91.625,-9.25)"  # net: P18
             - "B(7.62,2.54)(5.64,2.54)(5.1,2)V(2.247,-0.853)(2.247,-14.653)(0.6,-16.3)(-15.5,-16.3)(-15.71985,-16.51985)(-42.22739,-20.86535)(-42.64076,-20.899)(-75.16559,-20.899)(-75.57031,-20.8679)(-102.1114,-16.7636)(-109.625,-9.25)"  # net: P19
+      mcu_routes_rows_encoder_navswitch:
+        what: ceoloide/utility_router
+        where:
+          $extends: pcbs.main.footprints.mcu.where
+        params:
+          locked: false
+          routes:
+            # rows 
+            - "F(-7.62,8.02)(-13.9,14.3)V"  # net: P6
+            - "B(-13.925,14.3)(-14.9,15.275)(-14.9,15.85)"  # net: P6
+            - "F(-13.9,14.3)(-14.9,15.3)(-14.9,15.85)"  # net: P6
+            - "F(-7.62,5.08)(-8.9,3.8)(-8.9,0.9)(-10.95,-1.15)(-12.7,-1.15)V(-14.9,-1.15)F(-12.7,-1.15)"  # net: P5
+            - "F(-7.62,10.16)(-12.5,15.04)(-12.5,30.45)(-13.325,31.275)V(-14.9,32.85)F(-13.325,31.275)"  # net: P7
+            - "F(-7.62,12.7)(-11.9,16.98)(-11.9,46.85)(-14.9,49.85)"  # net: P8
+            # encoder
+            - "F(-3.25,55.65)(-3.25,48.95)(-11.3,40.9)(-11.3,18.92)(-7.62,15.24)"  # net: P9
+            - "B(-12.7,-1.15)(-11.898,-0.348)(-11.898,42.6)(-10.498,44)(-1.9,44)(-0.45,45.35)"  # net: P5
+            - "B(-7.62,2.54)(-9,3.92)(-9,16.9)(-8.6,17.3)V(-8.6,18)(-10.7,20.1)(-10.7,39.9)(-5.25,45.35)(-3.25,45.35)"  # net: P4
+            - "B(-7.62,-2.54)(-1E+1,-0.16)(-1E+1,19.7)(-2.7,27)(-2.7,30.4)V"  # net: P2
+            - "F(-2.5,30.6)(-2.5,43)"  # net: P2
+            - "B(-7.62,0)(-9.5,1.88)(-9.5,19.55)(-1.25,27.8)(2.3,27.8)V"  # net: P3
+            - "F(2.5,28)(2.5,43)"  # net: P3
+            - "B(3.25,55.65)(0.699,53.099)(-9.5339,53.099)(-12.299,50.3339)(-12.299,18.451)(-14.9,15.85)"  # net: P6
+            - "B(-0.45,55.65)(-2.5,53.5)(-9.7,53.5)(-12.7,50.5)(-12.7,35.05)(-14.9,32.85)"  # net: P7
+            # navswitch
+            - "F(7.85,26.95)(6.259,25.359)(6.259,-0.93532)(2.6,-4.59432)(2.6,-6.82)(3.4,-7.62)"  # net: RST
       jst_routes_power:
         what: ceoloide/utility_router
         where:
@@ -545,8 +573,9 @@ pcbs:
         params:
           locked: false
           routes:
-            - "F(-39.12,6.3)(-38.32,7.1)(-36.09432,7.1)(-32.43532,3.441)(-6.141,3.441)(-4.55,1.85)V(-3.55,0.85)(-2.625,0.85)"  # net: RST
-            - "F(-4.55,1.85)(-3.55,0.85)(-2.625,0.85)"  # net: RST
+            - "(0.5,0.85)VF(2.625,0.85)"  # net: RST
+            - "(-4.55,1.85)VB(-3.55,0.85)(-2.625,0.85)"  # net: RST
+            - "F(-4.55,1.85)(-3.55,0.85)(-2.625,0.85)(0.5,0.85)B(2.625,0.85)"  # net: RST
       switch_route_rev_colpads:
         what: ceoloide/utility_router
         where: [switch]
@@ -572,6 +601,46 @@ pcbs:
           net: "{{column_net}}"
           routes:
             - "F(3,-5.675)(3,10.775)"
+      switch_route_col_outer_mod:
+        what: ceoloide/utility_router
+        where: matrix_outer_bottom
+        params:
+          net: "{{column_net}}"
+          locked: false
+          routes:
+            - "F(3.12,-5.795)(3.12,6.07)(5.9,8.85)V(7.3,7.45)(29.14128,7.45)(30.54128,6.05)(32.725,6.05)"  # net: P19
+      switch_route_col_pinky_mod:
+        what: ceoloide/utility_router
+        where: matrix_pinky_bottom
+        params:
+          net: "{{column_net}}"
+          locked: false
+          routes:
+            - "F(3.12,-5.795)(3.12,5.47)(4.3,6.65)(5.05,6.65)V(10.05,6.65)(13.526,3.174)(32.349,3.174)"  # net: P18
+      switch_route_col_ring_mod:
+        what: ceoloide/utility_router
+        where: matrix_ring_bottom
+        params:
+          net: "{{column_net}}"
+          locked: false
+          routes:
+            - "F(3.275,-5.95)(2.08,-4.755)(2.08,4.83)(4.4,7.15)V(10.95,7.15)(12.5,5.6)(27.275,5.6)(32.725,11.05)"  # net: P15
+      switch_route_col_middle_mod:
+        what: ceoloide/utility_router
+        where: matrix_middle_bottom
+        params:
+          net: "{{column_net}}"
+          locked: false
+          routes:
+            - "B(36.37657,17.40511)(35.10511,17.40511)(27.45,9.75)(13.1,9.75)V(11.398,9.75)(3.12,1.472)(3.12,-5.795)"  # net: P14
+      switch_route_col_index_mod:
+        what: ceoloide/utility_router
+        where: matrix_index_bottom
+        params:
+          net: "{{column_net}}"
+          locked: false
+          routes:
+            - "(31.96731,23.14534)B(31.96731,19.66731)(31.22019,18.92019)(31.20624,18.92019)(22.68604,10.4)(14.35,10.4)V(12.048,10.4)(3.12,1.472)(3.12,-5.795)(3.275,-5.95)"  # net: P16
       switch_route_rows_outer_pinky:
         what: ceoloide/utility_router
         where: [/^matrix_outer_.*/]
@@ -627,6 +696,34 @@ pcbs:
           routes:
             - "B(-4.15,18)(-4.15,4.65)(-2.25,2.75)V(-1.65,2.15)(-1.65,0)"
             - "B(-2.25,2.75)(-1.65,2.15)(-1.65,0)"
+      switch_route_thumbs_index_layer:
+        what: ceoloide/utility_router
+        where: thumbs_layer_cluster
+        params:
+          locked: false
+          net: "{{row_net}}"
+          routes:
+            - "B(-8.43358,4.07151)(8,4.65)"  # net: P9
+            - "B(-11.55229,3.25072)(-8.46902,4.06218)V(-11.55229,3.25072)"  # net: P9
+      switch_route_thumbs_layer_space:
+        what: ceoloide/utility_router
+        where: thumbs_space_cluster
+        params:
+          locked: false
+          net: "{{row_net}}"
+          routes:
+            - "F(5.68532,4.02978)(2.05969,-2.25)(0.28385,-2.72584)(-0.26615,-3.67846)VF(-1.76877,-4.08109)(-5.14377,-9.92676)V"  # net: P9
+            - "B(-5.15077,-9.93888)(-7.07975,-10.45575)F(-5.15077,-9.93888)"  # net: P9
+            - "(5.7186,4.0387)VB(8,4.65)F(5.7186,4.0387)"  # net: P9
+      switch_route_mod_row_navswitch:
+        what: ceoloide/utility_router
+        where:
+          $extends: pcbs.main.footprints.navswitch.where
+        params:
+          locked: false
+          net: P9
+          routes:
+            - "B(-17.75001,-5.1)(-17.25001,-4.6)(-6.5,-4.6)(-5.15,-3.25)"  # net: P9
       diode_route_colrow_pads:
         what: ceoloide/utility_router
         where: [switch]
@@ -637,7 +734,18 @@ pcbs:
           locked: false
           routes:
             - "(4.6,-0.9)VB(3.7,-0)(1.65,-0)F(3.7,-0)(4.6,-0.9)"
-
+      navswitch_diode_route:
+        what: ceoloide/utility_router
+        where:
+          $extends: pcbs.main.footprints.navswitch_diode.where
+        adjust:
+          $extends: pcbs.main.footprints.navswitch_diode.adjust
+        params:
+          locked: false
+          routes:
+            - "F(-1.7,0)(-3.3,-1.6)(-3.3,-3.8)V(-2.1,-5)F(-3.3,-3.8)"  # net: P8
+            - "F(1.65,-0)(1.65,1.6)V"  # net: nav_diode
+            - "B(1.599,1.651)(1.1,2.15)(1.1,11.4)(2.54877,12.84877)"  # net: nav_diode
  
   top_plate:
     outlines.main:
